@@ -1,0 +1,28 @@
+interfaces:
+  s0:
+    protocol: VISCA
+    device: /dev/ttyS0
+  ip0:
+    protocol: VISCA
+    connproto: tcp
+    ip: 10.1.2.7
+    port: 5678
+  ip1:
+    protocol: VISCA
+    connproto: tcp
+    ip: 10.1.2.8
+    port: 1259
+routes:
+  static:
+    0:
+      interface: s0
+    1:
+      interface: ip0
+      nat:
+        - external: 1
+          internal: 1
+    2:
+      interface: ip1
+      nat:
+        - external: 2
+          internal: 1
